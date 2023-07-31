@@ -1,0 +1,28 @@
+<div class="card mt-4">
+    <h4 class="card-header">Encoding {{encodingText}}</h4>
+    <div class="card-body">
+        <div *ngIf="loading">
+            <div class="d-flex justify-content-center" >
+                <div class="spinner-grow text-primary" role="status">
+                </div>
+              </div>
+        </div>
+        <div *ngIf="encodingStart">
+            <h4 class="card-header">Encoding session '{{encodingsessionId}}' Output</h4>
+            <div class="form-group shadow-textarea">
+                <textarea class="form-control z-depth-1" id="encodingOutput" rows="3" disabled [value]='encodingMessageBack' [(ngModel)]="encodingMessageBack"></textarea><br>
+                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                    <button class="btn btn-outline-success" type="button" (click)="stopEncoding()">Cancel</button>
+                </div>
+            </div>
+        </div>
+        <div *ngIf="!loading && !encodingStart">
+            <div class="input-group mb-3">
+                <input type="text" [value]='encodingText' [(ngModel)]="encodingText" class="form-control" placeholder="Please provide encoding value here" aria-label="Encoding value" aria-describedby="basic-addon2">
+                <div class="input-group-append">
+                    <button class="btn btn-outline-secondary" type="button" (click)="startEncoding()">Convert</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -52,7 +52,7 @@ export class HomeComponent {
         this.loading = true;
         this.encodingsessionId = uuid.v4().toString();
 
-            this.encodingService.encodingInvokeRequest(this.encodingText, this.encodingsessionId)
+            this.encodingService.encodingInvokeRequest(this.encodingText, this.encodingsessionId, this.signalrService.connection.connectionId)
             .pipe(first())
             .subscribe({
                 next: data=> {

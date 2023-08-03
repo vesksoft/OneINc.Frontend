@@ -13,12 +13,13 @@ export class EncodingService
 
     }
 
-    encodingInvokeRequest(requestValue:string, encodingSessionId:string) : Observable<any>
+    encodingInvokeRequest(requestValue:string, encodingSessionId:string, signalrRsessionId:string) : Observable<any>
     {
         const body = 
         {
              content: requestValue,
-             sessionId: encodingSessionId
+             sessionId: encodingSessionId,
+             signalRSessionId:signalrRsessionId
         };
         return this.http
         .post<any>(`${environment.apiUrl}/encoding`, body)
